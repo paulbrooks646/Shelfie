@@ -13,6 +13,7 @@ massive({
     })
         .then(dbInstance => {
             app.set("db", dbInstance)
+            console.log("connnected to db")
         })
         .catch(err => console.log(err))
 
