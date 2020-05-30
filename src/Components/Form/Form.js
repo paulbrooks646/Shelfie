@@ -10,7 +10,9 @@ this.state = {
     userInput3: ""
 }
 this.handleClick = this.handleClick.bind(this)
+this.hamdleClick2 = this.handleClick2.bind(this)
     }
+    
     handleChange1(val) {
         this.setState({userInput: val})
     }
@@ -23,7 +25,9 @@ this.handleClick = this.handleClick.bind(this)
     handleClick() {
         this.setState({userInput: "", userInput2: 0, userInput3: ""})
     }
-
+    handleClick2() {
+       
+    }
     // axios.post() {
 
     // }
@@ -35,7 +39,7 @@ this.handleClick = this.handleClick.bind(this)
                 <input id="myInput" value={this.state.userInput2} onChange={e => this.handleChange2(e.target.value)}/>
                 <input id="myInput" value={this.state.userInput3} onChange={e =>this.handleChange3(e.target.value)}/>
                 <button onClick={this.handleClick}>Cancel</button>
-                <button>Add to Inventory</button>
+                <button onClick={() => this.props.postRequest(this.state.userInput, this.state.userInput2, this.state.userInput3)}>Add to Inventory</button>
             </div>
         )
     }

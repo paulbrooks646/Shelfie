@@ -12,23 +12,33 @@ export default class App extends Component {
     this.state = {
       inventoryArray: []
     }
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.addProduct = this.addProduct.bind(this)
   }
   componentDidMount() {
     axios.get("/api/inventory").then((res) => {
       this.setState({ inventoryArray: res.data })
-      console.log(res.data)
-      console.log(this.state.inventoryArray)
     })
       .catch(() => {
         alert('failed to retrieve')
       })
   }
+  addProduct(name, price, img){
+    const body = {name, price, img}
+    axios.post("/api/product", body).then(res => {
+      this.setState({inventoryArray: res.data})
+      this.componentDidMount()
+    })
+    .catch(() => {
+      alert('failed to create')})
+  
+  }
 
   render() {
     return (
       <div>
-        <Dashboard />
-        <Form />
+        <Dashboard inventoryArray={this.state.inventoryArray} />
+        <Form postRequest={this.addProduct} getRequest={this.componentDidMount}/>
         <Header />
       </div>
     )
