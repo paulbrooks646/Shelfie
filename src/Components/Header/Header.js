@@ -12,7 +12,9 @@ this.state = {
 
     render() {
         return (
-            <div>Header</div>
+            <div className="header">
+                <h1>SHELFIE</h1>
+            </div>
         )
     }
 }

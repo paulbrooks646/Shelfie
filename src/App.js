@@ -14,6 +14,7 @@ export default class App extends Component {
     }
     this.componentDidMount = this.componentDidMount.bind(this)
     this.addProduct = this.addProduct.bind(this)
+
   }
   componentDidMount() {
     axios.get("/api/inventory").then((res) => {
@@ -36,10 +37,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <Dashboard inventoryArray={this.state.inventoryArray} />
-        <Form postRequest={this.addProduct} getRequest={this.componentDidMount}/>
+      <div className="main">
         <Header />
+        <div className="middle">
+          <Dashboard inventoryArray={this.state.inventoryArray} />
+          <Form postRequest={this.addProduct} getRequest={this.componentDidMount}/>
+        </div>
+        
       </div>
     )
   }

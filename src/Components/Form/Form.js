@@ -34,12 +34,20 @@ this.hamdleClick2 = this.handleClick2.bind(this)
 
     render() {
         return (
-            <div>
-                <input id="myInput" value={this.state.userInput} onChange={e => this.handleChange1(e.target.value)}/>
-                <input id="myInput" value={this.state.userInput2} onChange={e => this.handleChange2(e.target.value)}/>
+            <div className="form">
+                <div className="picture"></div>
+                <div className="central">
+                <h3>Image URL:</h3>
                 <input id="myInput" value={this.state.userInput3} onChange={e =>this.handleChange3(e.target.value)}/>
+                <h3>Product Name:</h3>
+                <input id="myInput" value={this.state.userInput} onChange={e => this.handleChange1(e.target.value)}/>
+                <h3>Price:</h3>
+                <input id="myInput" value={this.state.userInput2} onChange={e => this.handleChange2(e.target.value)}/>
+                </div>
+                <div className="buttons">
                 <button onClick={this.handleClick}>Cancel</button>
                 <button onClick={() => this.props.postRequest(this.state.userInput, this.state.userInput2, this.state.userInput3)}>Add to Inventory</button>
+                </div>
             </div>
         )
     }
