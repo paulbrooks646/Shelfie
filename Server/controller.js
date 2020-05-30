@@ -1,9 +1,9 @@
 module.exports = {
     create: (req, res, next) => {
         const dbInstance = req.app.get("db")
-        const {name, price, img} = req.body
+        const {name, price, image} = req.body
 
-        dbInstance.create_product([name, price, img])
+        dbInstance.create_product([name, price, image])
         .then( () => res.sendStatus(200))
         .catch ( err => {
             res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"})

@@ -20,18 +20,14 @@ export default class App extends Component {
     axios.get("/api/inventory").then((res) => {
       this.setState({ inventoryArray: res.data })
     })
-      .catch(() => {
-        alert('failed to retrieve')
-      })
   }
+ 
   addProduct(name, price, img){
     const body = {name, price, img}
     axios.post("/api/product", body).then(res => {
-      this.setState({inventoryArray: res.data})
-      this.componentDidMount()
-    })
-    .catch(() => {
-      alert('failed to create')})
+      this.setState({inventoryArray: res.data}
+    )})
+    
   
   }
 

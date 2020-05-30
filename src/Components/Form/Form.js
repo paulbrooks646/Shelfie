@@ -46,7 +46,8 @@ this.hamdleClick2 = this.handleClick2.bind(this)
                 </div>
                 <div className="buttons">
                 <button onClick={this.handleClick}>Cancel</button>
-                <button onClick={() => this.props.postRequest(this.state.userInput, this.state.userInput2, this.state.userInput3)}>Add to Inventory</button>
+                <button onClick={() => this.props.postRequest(this.state.userInput, this.state.userInput2, this.state.userInput3)}
+                 >Add to Inventory</button>
                 </div>
             </div>
         )
