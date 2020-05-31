@@ -10,7 +10,7 @@ this.state = {
     userInput3: ""
 }
 this.handleClick = this.handleClick.bind(this)
-this.hamdleClick2 = this.handleClick2.bind(this)
+
     }
     
     handleChange1(val) {
@@ -25,24 +25,18 @@ this.hamdleClick2 = this.handleClick2.bind(this)
     handleClick() {
         this.setState({userInput: "", userInput2: 0, userInput3: ""})
     }
-    handleClick2() {
-       
-    }
-    // axios.post() {
-
-    // }
 
     render() {
         return (
             <div className="form">
-                <div className="picture"></div>
+                <div className="picture"><img className="preview" src={this.state.userInput3} alt="Preview"/></div>
                 <div className="central">
                 <h3>Image URL:</h3>
-                <input id="myInput" value={this.state.userInput3} onChange={e =>this.handleChange3(e.target.value)}/>
+                <input id="myInput3" value={this.state.userInput3} onChange={e =>this.handleChange3(e.target.value)}/>
                 <h3>Product Name:</h3>
-                <input id="myInput" value={this.state.userInput} onChange={e => this.handleChange1(e.target.value)}/>
+                <input id="myInput1" value={this.state.userInput} onChange={e => this.handleChange1(e.target.value)}/>
                 <h3>Price:</h3>
-                <input id="myInput" value={this.state.userInput2} onChange={e => this.handleChange2(e.target.value)}/>
+                <input id="myInput2" value={this.state.userInput2} onChange={e => this.handleChange2(e.target.value)}/>
                 </div>
                 <div className="buttons">
                 <button onClick={this.handleClick}>Cancel</button>
