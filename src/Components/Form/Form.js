@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import axios from 'axios'
 
 export default class Form extends Component {
     constructor() {
@@ -25,6 +26,17 @@ this.handleClick = this.handleClick.bind(this)
     handleClick() {
         this.setState({userInput: "", userInput2: 0, userInput3: ""})
     }
+    addProduct(name, price, img) {
+        const body = {name, price, img}
+        axios.post("/api/product", body).then(res => {
+          this.setState({
+            inventoryArray: res.data
+          })
+        })
+        .catch(() => {
+          alert('failed to create')})
+      }
+    
 
     render() {
         return (
@@ -40,7 +52,9 @@ this.handleClick = this.handleClick.bind(this)
                 </div>
                 <div className="buttons">
                 <button onClick={this.handleClick}>Cancel</button>
-                <button onClick={() => this.props.postRequest(this.state.userInput, this.state.userInput2, this.state.userInput3)}
+                    <button onClick={() =>{ this.addProduct(this.state.userInput, this.state.userInput2, this.state.userInput3)
+                    this.setState({userInput: "", userInput2: 0, userInput3: ""})
+                    this.props.getRequest()}}
                  >Add to Inventory</button>
                 </div>
             </div>
