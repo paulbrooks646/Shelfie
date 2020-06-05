@@ -54,7 +54,7 @@ this.handleClick = this.handleClick.bind(this)
                 <button onClick={this.handleClick}>Cancel</button>
                     <button onClick={() =>{ this.addProduct(this.state.userInput, this.state.userInput2, this.state.userInput3)
                     this.setState({userInput: "", userInput2: 0, userInput3: ""})
-                    this.props.getRequest()}}
+                    this.props.getInventory()}}
                  >Add to Inventory</button>
                 </div>
             </div>

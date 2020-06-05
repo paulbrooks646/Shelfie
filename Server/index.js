@@ -21,6 +21,7 @@ app.use(express.json())
 
 app.get("/api/inventory", controller.view)
 app.post("/api/product", controller.create)
+app.delete("/api/product/:id", controller.delete)
 
 
 app.listen(SERVER_PORT, () => {

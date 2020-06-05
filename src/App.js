@@ -13,12 +13,18 @@ export default class App extends Component {
       inventoryArray: []
     }
 
-    this.getRequest = this.getRequest.bind(this)
+    this.getInventory = this.getInventory.bind(this)
 
   }
 
-getRequest() {
-  axios.get("/api/inventory").then((res) => {
+  componentDidMount() {
+    
+    this.getInventory()
+ }
+
+getInventory() {
+  axios
+  .get("/api/inventory").then((res) => {
     this.setState({
       inventoryArray: res.data
     })
@@ -26,22 +32,15 @@ getRequest() {
  .catch(() => {
   alert('failed to retrieve')})}
 
-
-
- componentDidMount() {
-   this.getRequest()
-  }
- 
- 
-  
   render() {
+    
     
     return (
       <div className="main">
         <Header/>
         <div className="middle">
-          <Dashboard inventoryArray={this.state.inventoryArray}/>
-          <Form getRequest={this.getRequest} postRequest={this.addProduct}/>
+          <Dashboard inventoryArray={this.state.inventoryArray} getInventory={this.getInventory}/>
+          <Form getInventory={this.getInventory}/>
         </div> 
       </div>
     )
