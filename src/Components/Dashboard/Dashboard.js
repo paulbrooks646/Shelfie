@@ -9,20 +9,12 @@ this.state = {
 }
     }
 
-   deleteProduct(id) {
-    axios.delete(`/api/product/${id}`)
-    .then(() => {
-       this.props.getInventory() 
-    })
-    .catch( err => {
-        console.log(err)
-    })
-   }
+   
 
     render() {
       
     const newArray = this.props.inventoryArray.map((e, index) => 
-            <Product key={index} inventoryArray2={this.props.inventoryArray[index]} deleteProduct={this.deleteProduct}/>    
+            <Product key={index} inventoryArray2={this.props.inventoryArray[index]}/>    
             )
         return (
             <div>{newArray}</div>

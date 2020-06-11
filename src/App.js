@@ -28,9 +28,7 @@ getInventory() {
     this.setState({
       inventoryArray: res.data
     })
- })
- .catch(() => {
-  alert('failed to retrieve')})}
+ })}
 
   render() {
     
