@@ -28,7 +28,7 @@ deleteProduct() {
                 </div>
                 <div>
                     <button onClick={ () => this.deleteProduct()}>Delete</button>
-                    <Link to={`/edit/${this.props.inventoryArray2}`}><button>Edit</button></Link>
+                    <Link to={`/edit/${this.props.inventoryArray2.id}`}><button>Edit</button></Link>
                 </div>
             </div>
         )

@@ -15,9 +15,9 @@ this.handleClick = this.handleClick.bind(this)
     }
     
     componentDidMount() {
-        if (this.props.location.pathname === '/add') {
-            axios.get(`/api/product/${3}`).then( res => {
-                this.setstate({
+        if (this.props.match.path === '/edit/:id') {
+            axios.get(`/api/product/${this.props.match.params.id}`).then( res => {
+                this.setState({
                     userInput: res.data[0].name,
                     userInput2: res.data[0].price,
                     userInput3: res.data[0].img
@@ -36,20 +36,34 @@ this.handleClick = this.handleClick.bind(this)
         this.setState({userInput3: val})
     }
     handleClick() {
-        this.setState({userInput: "", userInput2: 0, userInput3: "", editProductId: null})
+        this.setState({userInput: "", userInput2: 0, userInput3: ""})
     }
     addProduct(name, price, img) {
+        
         const body = {name, price, img}
+        console.log(body)
         axios.post("/api/product", body).then( () => {
-           this.props.history.push("/") 
-        })}
+            this.setState({
+                userInput: "",
+                userInput2: 0,
+                userInput3: ""
+            })
+        })
+        this.props.history.push("/") 
+    }
 
     updateProduct(id, name, price, img) {
         const body = {name, price, img}
         axios.put(`/api/product/${id}`, body)
         .then( () => {
-            this.props.history.push("/")
+            this.setState({
+                userInput: "",
+                userInput2: 0,
+                userInput3: ""
+            })
+           
         })
+        this.props.history.push("/")
     }   
 
     render() {
@@ -75,9 +89,10 @@ this.handleClick = this.handleClick.bind(this)
                 </div>
                 <div className="buttons">
                     <button onClick={this.handleClick}>Cancel</button>
-                    <button onClick={() =>{ this.addProduct(this.state.userInput, this.state.userInput2, this.state.userInput3)
-                    this.setState({userInput: "", userInput2: 0, userInput3: ""})}}
-                    >Add to Inventory
+                    <button onClick={
+                        // this.props.match.path === '/edit/:id' ? () => this.updateProduct(this.props.match.params.id, this.state.userInput, this.state.userInput2, this.state.userInput3) : 
+                        () => this.addProduct(this.state.userInput, this.state.userInput2, this.state.userInput3)}
+                    >{this.props.match.path === '/edit/:id' ? 'Save Changes' : 'Add to Inventory'}
                     </button>
                 </div>
             </div>

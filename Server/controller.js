@@ -3,7 +3,8 @@ module.exports = {
     create: (req, res) => {
         const dbInstance = req.app.get("db")
         const {name, price, img} = req.body
-
+        // console.log(body)
+        // console.log(typeof price)
         dbInstance.create_product([name, price, img])
         .then( () => res.sendStatus(200))
             },
