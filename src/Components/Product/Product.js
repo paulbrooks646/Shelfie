@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
+import {Link} from 'react-router-dom'
 
 export default class Product extends Component {
     constructor() {
@@ -27,7 +28,7 @@ deleteProduct() {
                 </div>
                 <div>
                     <button onClick={ () => this.deleteProduct()}>Delete</button>
-                    <button onClick={() => this.props.updateSelectedProduct(this.props.inventoryArray2.id)}>Edit</button>
+                    <Link to={`/edit/${this.props.inventoryArray2}`}><button>Edit</button></Link>
                 </div>
             </div>
         )
