@@ -27,7 +27,7 @@ deleteProduct() {
                 </div>
                 <div>
                     <button onClick={ () => this.deleteProduct()}>Delete</button>
-                    <button onClick={() => this.props.updateSelectedProduct(this.props.inventoryArray2.id, this.props.inventoryArray2.name, this.props.inventoryArray2.img, this.props.inventoryArray2.price)}>Edit</button>
+                    <button onClick={() => this.props.updateSelectedProduct(this.props.inventoryArray2.id)}>Edit</button>
                 </div>
             </div>
         )

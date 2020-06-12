@@ -31,6 +31,6 @@ module.exports = {
         const {name, price, img} = req.body
 
         dbInstance.update_product(id, name, price, img)
-
+        .then(() => res.sendStatus(200))
     }
 }

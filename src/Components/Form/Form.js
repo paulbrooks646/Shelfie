@@ -9,8 +9,7 @@ this.state = {
     editProductId: null,
     userInput: "",
     userInput2: 0,
-    userInput3: "",
-    product: []
+    userInput3: ""
 }
 this.handleClick = this.handleClick.bind(this)
 
@@ -20,8 +19,9 @@ this.handleClick = this.handleClick.bind(this)
             this.setState({
                 editProductId: this.props.selectedProduct
             })
+            this.changeProduct()
         }
-        this.changeProduct()
+        
     }
     
     handleChange1(val) {
@@ -53,8 +53,17 @@ this.handleClick = this.handleClick.bind(this)
             })
         })
     } 
-    updateProduct() {
-        
+    updateProduct(id, name, price, img) {
+        const body = {name, price, img}
+        axios.put(`/api/product/${id}`, body)
+        .then( () => {
+            this.setState({
+                userInput: "",
+                userInput2 : "",
+                userInput3: "",
+                editProductId: ""
+            })
+        })
     }   
 
     render() {
@@ -108,7 +117,7 @@ this.handleClick = this.handleClick.bind(this)
     </div>
     <div className="buttons">
         <button onClick={this.handleClick}>Cancel</button>
-        <button onClick={() => this.updateProduct()}>Save Changes</button>
+        <button onClick={() => this.updateProduct(this.state.editProductId, this.state.userInput, this.state.userInput2, this.state.userInput3)}>Save Changes</button>
     </div>
 </div>
 
