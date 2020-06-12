@@ -10,11 +10,12 @@ export default class App extends Component {
     super()
 
     this.state = {
-      inventoryArray: []
+      inventoryArray: [],
+      selectedProduct: {}
     }
 
     this.getInventory = this.getInventory.bind(this)
-
+    this.updateSelectedProduct = this.updateSelectedProduct.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +31,12 @@ getInventory() {
     })
  })}
 
+ updateSelectedProduct(productToBeEdited) {
+   this.setState({
+     selectedProduct: productToBeEdited
+   })
+ }
+
   render() {
     
     
@@ -37,8 +44,8 @@ getInventory() {
       <div className="main">
         <Header/>
         <div className="middle">
-          <Dashboard inventoryArray={this.state.inventoryArray} getInventory={this.getInventory}/>
-          <Form getInventory={this.getInventory}/>
+          <Dashboard inventoryArray={this.state.inventoryArray} getInventory={this.getInventory} updateSelectedProduct={this.updateSelectedProduct}/>
+          <Form getInventory={this.getInventory} selectedProduct={this.state.selectedProduct}/>
         </div> 
       </div>
     )
